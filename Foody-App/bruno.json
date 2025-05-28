@@ -1,0 +1,9 @@
+{
+  "version": "1",
+  "name": "Foody-App",
+  "type": "collection",
+  "ignore": [
+    "node_modules",
+    ".git"
+  ]
+}
