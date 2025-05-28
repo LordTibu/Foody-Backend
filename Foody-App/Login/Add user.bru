@@ -1,0 +1,18 @@
+meta {
+  name: Add user
+  type: http
+  seq: 2
+}
+
+post {
+  url: {{URL}}/{{API}}/auth/register
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "email": "test1@example.com",
+    "password": "123456"
+  }
+}
