@@ -1,19 +1,24 @@
 SERVICE=foodyapp
+DOCKER_COMPOSE=docker-compose
 
 build:
-	docker-compose build --no-cache
+	$(DOCKER_COMPOSE) build --no-cache
 
 up:
-	docker-compose up --pull always -d --wait
+	$(DOCKER_COMPOSE) up --pull always -d --wait
 
 down:
-	docker-compose down
+	$(DOCKER_COMPOSE) down
 
 restart:
-	docker-compose down && docker-compose up --build
+	$(DOCKER_COMPOSE) down && $(DOCKER_COMPOSE) up --build
+
+logs:
+	$(DOCKER_COMPOSE) logs -f $(SERVICE)
 
 clean-db:
-	-docker volume rm $$(docker volume ls -q | grep pgdata) || true
+	$(DOCKER_COMPOSE) down
+	docker volume rm $$(docker volume ls -q | grep pgdata) || true
 
 clean-volumes:
 	docker volume prune -f
@@ -23,16 +28,16 @@ clean:
 	docker system prune -f
 
 prisma-generate:
-	docker-compose exec $(SERVICE) npx prisma generate
+	$(DOCKER_COMPOSE) exec $(SERVICE) npx prisma generate
 
 prisma-migrate:
-	docker-compose exec $(SERVICE) npx prisma migrate dev --name init
+	$(DOCKER_COMPOSE) exec $(SERVICE) npx prisma migrate dev --name init
 
 prisma-seed:
-	docker-compose exec $(SERVICE) npx prisma db seed
+	$(DOCKER_COMPOSE) exec $(SERVICE) npx prisma db seed
 
 prisma-migrate-deploy:
-	docker-compose exec $(SERVICE) npx prisma migrate deploy
+	$(DOCKER_COMPOSE) exec $(SERVICE) npx prisma migrate deploy
 
 prisma-studio:
-	docker-compose exec $(SERVICE) npx prisma studio
+	$(DOCKER_COMPOSE) exec $(SERVICE) npx prisma studio

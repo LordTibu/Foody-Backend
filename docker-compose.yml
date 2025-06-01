@@ -12,7 +12,7 @@ services:
     volumes:
       - pgdata:/var/lib/postgresql/data
 
-  app:
+  foodyapp:
     build: .
     container_name: foodyapp
     depends_on:
