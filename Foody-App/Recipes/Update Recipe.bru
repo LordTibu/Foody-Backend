@@ -1,0 +1,21 @@
+meta {
+  name: Update Recipe
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{URL}}/{{API}}/recipes/b42a66d6-2b7b-4853-ab86-dea4434f0c59
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "title": "Pancakes Updated",
+    "time": 25,
+    "instructions": "Mix and cook longer.",
+    "imageUrl": "https://example.com/pancakes.jpg",
+    "notes": "Updated instructions"
+  }
+}

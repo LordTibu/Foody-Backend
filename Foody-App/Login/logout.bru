@@ -14,19 +14,7 @@ body:json {
   {}
 }
 
-script:pre-request {
-  // Check if we have a token before attempting logout
-  const currentToken = bru.getEnvVar("accessToken");
-  if (!currentToken) {
-    bru.setVar("skip", true);
-  }
-}
-
 script:post-response {
-  // Always clear token after logout attempt
   bru.setEnvVar("accessToken", null);
   
-  if (bru.getVar("skip")) {
-    throw new Error("Already logged out - no token present");
-  }
 }

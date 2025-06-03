@@ -1,0 +1,18 @@
+meta {
+  name: Delete Recipe Ingredient
+  type: http
+  seq: 4
+}
+
+delete {
+  url: {{URL}}/{{API}}/recipe-ingredients
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "recipeId": "{{recipeId}}",
+    "ingredientId": "{{ingredientId}}"
+  }
+}
