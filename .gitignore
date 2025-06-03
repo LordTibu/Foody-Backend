@@ -1,3 +1,35 @@
+# Environment variables
+.env
+.env.local
+.env.*.local
+
+# Node
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# IDE
+.idea/
+.vscode/
+*.swp
+*.swo
+
+# OS
+.DS_Store
+Thumbs.db
+
+# Logs
+logs
+*.log
+
+# Build
+dist/
+build/
+
+# Docker
+docker-compose.override.yml
+
 # Logs
 logs
 *.log
@@ -33,7 +65,6 @@ bower_components
 build/Release
 
 # Dependency directories
-node_modules/
 jspm_packages/
 
 # Typescript v1 declaration files
@@ -70,24 +101,11 @@ typings/
 # Prisma generated client (optional, can regenerate)
 /node_modules/.prisma
 
-# Docker
-docker-compose.override.yml
-*.local.yml
-*.env.local
-.env.local
-.env.test
-.env.production
-.env.development
-.env.*
-
 # Docker volumes/mounts (si montés localement)
 pgdata/
 
 # VSCode
 .vscode/
-
-# Mac system files
-.DS_Store
 
 # Logs in any folder
 **/*.log
