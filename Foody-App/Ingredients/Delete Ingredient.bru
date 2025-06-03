@@ -1,0 +1,21 @@
+meta {
+  name: Delete Ingredient
+  type: http
+  seq: 5
+}
+
+delete {
+  url: {{URL}}/{{API}}/ingredients/644c7486-6f11-4d83-bb17-b4bb7b94909d
+  body: none
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "Leche",
+    "quantity": 2,
+    "quantityType": "L",
+    "expiration": "2025-07-10T00:00:00.000Z",
+    "notes": "Baja en calorias"
+  }
+}
