@@ -1,0 +1,25 @@
+meta {
+  name: Refresh Token
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{URL}}/{{API}}/auth/refresh
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {}
+}
+
+script:post-response {
+  // Only update token if request was successful
+  if (res.statusCode === 200 && res.body.accessToken) {
+    bru.setEnvVar("accessToken", res.body.accessToken);
+  } else {
+    // If refresh failed, clear the token to prevent loops
+    bru.setEnvVar("accessToken", null);
+  }
+}
