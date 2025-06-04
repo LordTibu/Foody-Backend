@@ -1,0 +1,21 @@
+meta {
+  name: Update Recipe Ingredient
+  type: http
+  seq: 3
+}
+
+put {
+  url: {{URL}}/{{API}}/recipe-ingredients
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "recipeId": "1",
+    "ingredientId": "1",
+    "quantity": 3,
+    "quantityType": "PCS",
+    "notes": "Finely chopped"
+  }
+}

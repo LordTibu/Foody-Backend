@@ -1,0 +1,21 @@
+meta {
+  name: Update Ingredient
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{URL}}/{{API}}/ingredients/db96ba32-75c1-4fc2-938e-a4101c310b22
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "name": "Leche",
+    "quantity": 2,
+    "quantityType": "L",
+    "expiration": "2025-07-10T00:00:00.000Z",
+    "notes": "Baja en calorias"
+  }
+}

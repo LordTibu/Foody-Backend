@@ -1,0 +1,74 @@
+meta {
+  name: Add Recipe Suggestion
+  type: http
+  seq: 7
+}
+
+post {
+  url: {{URL}}/{{API}}/recipes/save-suggestion
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+      "title": "Creamy Scrambled Eggs",
+      "time": 15,
+      "difficulty": "easy",
+      "instructions": {
+        "prep": [
+          {
+            "step": 1,
+            "description": "Crack 2 eggs into a bowl and whisk them until fully beaten. Add 1/2 cup milk and whisk until well combined and no egg streaks remain.",
+            "time": 2,
+            "tools": [
+              "whisk",
+              "bowl"
+            ]
+          }
+        ],
+        "cooking": [
+          {
+            "step": 1,
+            "description": "Heat a non-stick pan over low-medium heat (300°F). Add 1 TBSP butter and swirl to coat the pan. Once butter is melted and foamy, proceed to cooking.",
+            "time": 2,
+            "temperature": "300°F",
+            "indicators": "Butter should be melted and foamy"
+          },
+          {
+            "step": 2,
+            "description": "Pour egg mixture into the pan and let cook for 30 seconds. Use a heat-resistant spatula to gently scramble the eggs, breaking them into curds. Continue cooking and scrambling for another 2-3 minutes, until eggs are just set and still moist.",
+            "time": 3,
+            "temperature": "low-medium heat",
+            "indicators": "Eggs should be just set and still moist"
+          }
+        ],
+        "plating": [
+          {
+            "step": 1,
+            "description": "Serve immediately on warmed plates."
+          }
+        ]
+      },
+      "notes": "For best results, use room temperature eggs. Store any leftovers in an airtight container in the refrigerator for up to 1 day. Reheat in a pan or microwave until warmed through.",
+      "ingredients": {
+        "available": [
+          {
+            "name": "eggs",
+            "quantity": 2,
+            "quantityType": "PCS",
+            "notes": "room temperature"
+          },
+          {
+            "name": "milk",
+            "quantity": 0.5,
+            "quantityType": "CUP",
+            "notes": "whole milk preferred"
+          }
+        ],
+        "missing": []
+      },
+      "source": "groq",
+      "confidence": "high"
+    }
+}

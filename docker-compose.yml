@@ -24,6 +24,7 @@ services:
       JWT_SECRET: ${JWT_SECRET}
       REFRESH_SECRET: ${REFRESH_SECRET}
       COOKIE_SECRET: ${COOKIE_SECRET}
+      GROQ_API_KEY: ${GROQ_API_KEY}
     ports:
       - "3000:3000"
     volumes:

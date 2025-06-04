@@ -1,0 +1,21 @@
+meta {
+  name: Add Recipe
+  type: http
+  seq: 4
+}
+
+post {
+  url: {{URL}}/{{API}}/recipes
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "title": "Pancakes",
+    "time": 20,
+    "instructions": "Mix all ingredients and cook.",
+    "imageUrl": "https://example.com/pancakes.jpg",
+    "notes": "Family recipe"
+  }
+}

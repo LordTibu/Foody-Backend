@@ -1,0 +1,21 @@
+meta {
+  name: Add Ingredient to Recipe
+  type: http
+  seq: 1
+}
+
+post {
+  url: {{URL}}/{{API}}/recipe-ingredients
+  body: json
+  auth: inherit
+}
+
+body:json {
+  {
+    "recipeId": "b42a66d6-2b7b-4853-ab86-dea4434f0c59",
+    "ingredientId": "96e97185-3b36-4ffa-b1d9-b47ce4702630",
+    "quantity": 2,
+    "quantityType": "PCS",
+    "notes": ""
+  }
+}

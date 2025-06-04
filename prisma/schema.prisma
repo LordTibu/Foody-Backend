@@ -8,8 +8,62 @@ generator client {
 }
 
 model User {
-  id           String   @id @default(uuid())
-  email        String   @unique
+  id           String       @id @default(uuid())
+  email        String       @unique
   passwordHash String
-  createdAt    DateTime @default(now())
+  createdAt    DateTime     @default(now())
+  Ingredient   Ingredient[]
+  Recipe       Recipe[]
+}
+
+enum Unit {
+  G // grams
+  KG // kilograms
+  ML // milliliters
+  L // liters
+  PCS // pieces
+  TBSP // tablespoon
+  TSP // teaspoon
+  CUP // cup
+  OZ // ounces
+  LB // pounds
+  SLICE // slice
+  PINCH // pinch
+  OTHER // other or custom unit
+}
+
+model Ingredient {
+  id           String             @id @default(uuid())
+  name         String
+  quantity     Float
+  quantityType Unit
+  expiration   DateTime?
+  notes        String?
+  user         User               @relation(fields: [userId], references: [id], onDelete: Cascade)
+  userId       String
+  recipes      RecipeIngredient[]
+}
+
+model Recipe {
+  id           String             @id @default(uuid())
+  title        String
+  time         Int?
+  instructions String
+  imageUrl     String?
+  notes        String?
+  createdBy    User               @relation(fields: [createdById], references: [id])
+  createdById  String
+  ingredients  RecipeIngredient[]
+}
+
+model RecipeIngredient {
+  recipe       Recipe     @relation(fields: [recipeId], references: [id])
+  recipeId     String
+  ingredient   Ingredient @relation(fields: [ingredientId], references: [id])
+  ingredientId String
+  quantity     Float
+  quantityType Unit
+  notes        String?
+
+  @@id([recipeId, ingredientId])
 }
